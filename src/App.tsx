@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './Components/Header'
+import ProgressBar from './Components/ProgressBar'
 
 type Mode = 'light' | 'dark'
 
@@ -18,6 +19,7 @@ function App() {
         onChange={handleTheme}
       />
       <Header handleTheme={handleTheme} />
+      <ProgressBar />
     </div>
   )
 }
