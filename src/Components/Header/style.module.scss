@@ -2,6 +2,7 @@
   position: absolute;
   opacity: 0;
   pointer-events: none;
+  top: 0;
 }
 
 :global(.theme-toggle):checked ~ .header {
