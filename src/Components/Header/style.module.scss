@@ -1,0 +1,25 @@
+:global(.theme-toggle) {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+:global(.theme-toggle):checked ~ .header {
+  [class*='thumb_'] {
+    transform: translateX(1.8rem);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+}
