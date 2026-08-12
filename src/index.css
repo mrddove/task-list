@@ -1,0 +1,40 @@
+:root {
+  --bg: #14161c;
+  --surface: #1e212b;
+  --surface-alt: #262a35;
+  --border: #2f3340;
+  --text: #eef0f5;
+  --text-muted: #8b90a3;
+  --accent: #6c8cff;
+  --accent-soft: rgba(108, 140, 255, 0.15);
+  --danger: #f76b6b;
+  --warning: #f6b352;
+  --success: #4fd1a5;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* 10px/16px = 0.625px  or 62.5%*/
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
