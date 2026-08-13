@@ -1,4 +1,8 @@
+import DueDateInput from './DueDateInput'
 import InputForm from './InputForm'
+import SelectPriority from './SelectPriority'
+
+import styles from './style.module.scss'
 
 export default function FormTask() {
   function handleAddTask(formData: FormData) {
@@ -12,6 +16,11 @@ export default function FormTask() {
     <section>
       <form action={handleAddTask}>
         <InputForm name="task" />
+        <fieldset className={styles.fieldset}>
+          <legend className="sr-only">Task Details</legend>
+          <SelectPriority />
+          <DueDateInput />
+        </fieldset>
       </form>
     </section>
   )
