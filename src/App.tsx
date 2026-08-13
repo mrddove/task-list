@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FormTask from './Components/FormTask'
 import Header from './Components/Header'
 import ProgressBar from './Components/ProgressBar'
 
@@ -22,6 +23,7 @@ function App() {
       <div className="taskApp">
         <Header handleTheme={handleTheme} />
         <ProgressBar />
+        <FormTask />
       </div>
     </div>
   )

@@ -2,14 +2,8 @@
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  top: 0;
+  top: -9999px;
 }
-
-// :global(.theme-toggle):checked .taskApp ~ .header {
-//   [class*='thumb_'] {
-//     transform: translateX(1.8rem);
-//   }
-// }
 
 .header {
   display: flex;

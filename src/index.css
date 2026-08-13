@@ -21,6 +21,18 @@
   box-sizing: inherit;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 html {
   font-size: 62.5%; /* 10px/16px = 0.625px  or 62.5%*/
 }
@@ -39,16 +51,6 @@ ul {
   list-style: none;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 48rem;
-  margin: 5rem auto;
-  gap: 1.3rem;
-}
-
 [data-theme='dark'] .theme-toggle:checked ~ .taskApp {
   --bg: #f3f4f9;
   --surface: #ffffff;
@@ -57,4 +59,19 @@ ul {
   --text: #1a1c24;
   --text-muted: #6b7080;
   --shadow: 0 8px 24px rgba(20, 22, 30, 0.08);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5rem auto;
+  width: 100%;
+  max-width: 48rem;
+}
+
+.taskApp {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
 }
