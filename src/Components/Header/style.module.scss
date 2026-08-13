@@ -5,11 +5,11 @@
   top: 0;
 }
 
-:global(.theme-toggle):checked ~ .header {
-  [class*='thumb_'] {
-    transform: translateX(1.8rem);
-  }
-}
+// :global(.theme-toggle):checked .taskApp ~ .header {
+//   [class*='thumb_'] {
+//     transform: translateX(1.8rem);
+//   }
+// }
 
 .header {
   display: flex;
@@ -20,7 +20,7 @@
   &__title {
     font-size: 30px;
     font-weight: 700;
-    color: var(--text);
+    color: #eef0f5;
     margin: 0;
   }
 }

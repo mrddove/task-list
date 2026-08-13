@@ -11,15 +11,18 @@ function App() {
     setDarkMode(darkMode === 'light' ? 'dark' : 'light')
   }
   return (
-    <div className="taskApp">
+    <div className="container" data-theme={darkMode}>
       <input
         type="checkbox"
         checked={darkMode === 'dark'}
-        className="theme-toggle"
+        className="theme-toggle hey"
         onChange={handleTheme}
       />
-      <Header handleTheme={handleTheme} />
-      <ProgressBar />
+
+      <div className="taskApp">
+        <Header handleTheme={handleTheme} />
+        <ProgressBar />
+      </div>
     </div>
   )
 }
