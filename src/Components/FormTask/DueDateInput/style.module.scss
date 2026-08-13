@@ -1,0 +1,10 @@
+.date {
+  &__icon {
+    position: absolute;
+    color: var(--text-muted);
+    right: 1rem;
+    pointer-events: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
