@@ -2,7 +2,6 @@ import { useState } from 'react'
 import FormTask from './Components/FormTask'
 import Header from './Components/Header'
 import ProgressBar from './Components/ProgressBar'
-import TaskList from './Components/TaskList'
 
 type Mode = 'light' | 'dark'
 
@@ -25,7 +24,6 @@ function App() {
         <Header handleTheme={handleTheme} />
         <ProgressBar />
         <FormTask />
-        <TaskList />
       </div>
     </div>
   )
