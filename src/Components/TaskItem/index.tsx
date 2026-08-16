@@ -1,11 +1,14 @@
 import type { TaskDataType } from '../../assets/taskData'
+import { taskDueDate } from '../../utils/dueDate'
 import Card from '../Card'
 
 import styles from './style.module.scss'
 
 type TaskItemProps = TaskDataType
 
-export default function TaskItem({ text, priority }: TaskItemProps) {
+export default function TaskItem({ text, priority, dueDate }: TaskItemProps) {
+  const dueClass = taskDueDate(dueDate)
+
   return (
     <li className={styles.item}>
       <Card>
@@ -17,7 +20,11 @@ export default function TaskItem({ text, priority }: TaskItemProps) {
             >
               {priority}
             </span>
-            <span className={`${styles.item__tag} tag-due`}>Due tomorrow</span>
+            <span
+              className={`${styles.item__tag} ${styles[`tag-${dueClass}`]}`}
+            >
+              due {dueClass}
+            </span>
           </div>
         </div>
       </Card>
