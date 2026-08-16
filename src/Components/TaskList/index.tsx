@@ -7,7 +7,7 @@ export default function TaskList() {
     <section>
       <ul className={styles.task}>
         {taskData.map((task) => (
-          <TaskItem {...task} />
+          <TaskItem key={task.id} {...task} />
         ))}
       </ul>
     </section>
