@@ -1,0 +1,51 @@
+.item {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    color: var(--text);
+  }
+
+  &__meta {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  &__tag {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.3rem 0.9rem;
+    border-radius: 99.9rem;
+    background-color: red;
+    text-transform: capitalize;
+
+    color: var(--accent);
+    background-color: var(--accent-soft);
+
+    &.tag-priority-medium {
+      color: var(--warning);
+      background-color: rgba(246, 179, 82, 0.15);
+    }
+
+    &.tag-priority-low {
+      color: var(--success);
+      background-color: rgba(79, 209, 165, 0.15);
+    }
+
+    &.tag-priority-high {
+      color: var(--danger);
+      background-color: rgba(247, 107, 107, 0.15);
+    }
+
+    &.tag-overdue,
+    &.tag-tomorrow,
+    &.tag-today {
+      color: var(--danger);
+      background-color: rgba(247, 107, 107, 0.15);
+    }
+  }
+}
