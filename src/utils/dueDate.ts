@@ -1,8 +1,10 @@
 export function taskDueDate(dueDateInput: string): string {
   const dueDate: Date = new Date(dueDateInput)
   const today: Date = new Date()
-  const timeDiff: number = dueDate.getTime() - today.getTime()
 
+  //   Subtracting the milliseconds returned by getTime()
+  const timeDiff: number = dueDate.getTime() - today.getTime()
+  // (1000 * 60 * 60 * 24) equals 86,400,000 (the number of milliseconds in one single day).
   const diffInDays: number = Math.ceil(timeDiff / (1000 * 60 * 60 * 24))
 
   if (diffInDays === 1) return 'tomorrow'
