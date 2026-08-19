@@ -51,10 +51,11 @@
       }
     }
   }
-  // # END
+  // # END input label style
 
   // TaskList styles 👇
   &__body {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -107,6 +108,37 @@
     &.tag-today {
       color: var(--danger);
       background-color: rgba(247, 107, 107, 0.15);
+    }
+  }
+
+  // # END TaskList styles
+
+  //  edit & delete button
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 0.2rem;
+
+    & > .iconBtn {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease;
+
+      &.edit:hover {
+        color: var(--accent);
+      }
+      &.delete:hover {
+        color: var(--accent);
+        color: var(--danger);
+      }
     }
   }
 }

@@ -6,6 +6,9 @@ import styles from './style.module.scss'
 
 type TaskItemProps = TaskDataType
 
+import { FiEdit3 } from 'react-icons/fi'
+import { HiOutlineTrash } from 'react-icons/hi2'
+
 export default function TaskItem({
   title,
   priority,
@@ -62,6 +65,15 @@ export default function TaskItem({
               </span>
             )}
           </div>
+        </div>
+        {/* edit & delete button */}
+        <div className={styles.item__actions}>
+          <button className={[styles.iconBtn, styles.edit].join(' ')}>
+            <FiEdit3 />
+          </button>
+          <button className={[styles.iconBtn, styles.delete].join(' ')}>
+            <HiOutlineTrash />
+          </button>
         </div>
       </Card>
     </li>
