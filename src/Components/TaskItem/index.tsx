@@ -6,14 +6,14 @@ import styles from './style.module.scss'
 
 type TaskItemProps = TaskDataType
 
-export default function TaskItem({ text, priority, dueDate }: TaskItemProps) {
+export default function TaskItem({ title, priority, dueDate }: TaskItemProps) {
   const dueClass = taskDueDate(dueDate)
 
   return (
     <li className={styles.item}>
       <Card>
         <div className={styles.item__body}>
-          <p className={styles.item__text}>{text}</p>
+          <p className={styles.item__text}>{title}</p>
           <div className={styles.item__meta}>
             <span
               className={`${styles.item__tag} ${styles[`tag-priority-${priority}`]}`}
