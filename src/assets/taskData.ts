@@ -1,6 +1,6 @@
 export type TaskDataType = {
   id: number
-  text: string
+  title: string
   completed: boolean
   priority: string
   dueDate: string
@@ -9,42 +9,42 @@ export type TaskDataType = {
 export const taskData: TaskDataType[] = [
   {
     id: 1,
-    text: 'Learn React',
+    title: 'Learn React',
     completed: false,
     priority: 'medium',
     dueDate: '2026-08-21',
   },
   {
     id: 2,
-    text: 'Prototyping To-Do List',
+    title: 'Prototyping To-Do List',
     completed: true,
     priority: 'low',
     dueDate: '2026-08-17',
   },
   {
     id: 3,
-    text: 'Push to Github',
+    title: 'Push to Github',
     completed: false,
     priority: 'high',
     dueDate: '2026-08-15',
   },
   {
     id: 4,
-    text: 'Write unit tests for auth module',
+    title: 'Write unit tests for auth module',
     completed: false,
     priority: 'high',
     dueDate: '2026-08-16',
   },
   {
     id: 5,
-    text: 'Update README documentation',
+    title: 'Update README documentation',
     completed: false,
     priority: 'low',
     dueDate: '2026-08-28',
   },
   {
     id: 6,
-    text: 'Review pull request #42',
+    title: 'Review pull request #42',
     completed: true,
     priority: 'medium',
     dueDate: '2026-08-24',
