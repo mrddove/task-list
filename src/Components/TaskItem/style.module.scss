@@ -1,4 +1,59 @@
 .item {
+  > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.4rem;
+  }
+
+  // input label style 👇
+  &__label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__customCheckbox {
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 0.2rem solid var(--border);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    display: inline-block;
+    position: relative;
+
+    &.checked {
+      background-color: var(--success);
+      border-color: var(--success);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0.2rem;
+        left: 0.5rem;
+        width: 0.4rem;
+        height: 0.8rem;
+        border: solid #10121a;
+        border-width: 0 0.2rem 0.2rem 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+  // # END
+
+  // TaskList styles 👇
   &__body {
     display: flex;
     flex-direction: column;
@@ -8,6 +63,11 @@
   &__text {
     font-size: 1.4rem;
     color: var(--text);
+
+    &.completed {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
   }
 
   &__meta {
@@ -31,7 +91,8 @@
       background-color: rgba(246, 179, 82, 0.15);
     }
 
-    &.tag-priority-low {
+    &.tag-priority-low,
+    &.tag-done {
       color: var(--success);
       background-color: rgba(79, 209, 165, 0.15);
     }
