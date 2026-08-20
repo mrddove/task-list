@@ -6,6 +6,7 @@ import styles from './style.module.scss'
 
 type TaskItemProps = TaskDataType & {
   onDeleteTask: (item: string) => void
+  onDoneTask: (item: string) => void
 }
 
 import { FiEdit3 } from 'react-icons/fi'
@@ -18,6 +19,7 @@ export default function TaskItem({
   dueDate,
   completed,
   onDeleteTask,
+  onDoneTask,
 }: TaskItemProps) {
   const dueClass = taskDueDate(dueDate)
 
@@ -26,7 +28,11 @@ export default function TaskItem({
       <Card>
         {/* Checkbox */}
         <label className={styles.item__label}>
-          <input type="checkbox" className={styles.item__checkbox} />
+          <input
+            type="checkbox"
+            className={styles.item__checkbox}
+            onChange={() => onDoneTask(id)}
+          />
           <span
             className={[
               styles.item__customCheckbox,
