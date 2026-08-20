@@ -3,14 +3,14 @@ import FormTask from './Components/FormTask'
 import Header from './Components/Header'
 import ProgressBar from './Components/ProgressBar'
 import TaskList from './Components/TaskList'
-import { type TaskDataType } from './assets/taskData'
+import { taskData as item, type TaskDataType } from './assets/taskData'
 
 type Mode = 'light' | 'dark'
 
 function App() {
   const [darkMode, setDarkMode] = useState<Mode>('light')
 
-  const [taskData, setTaskData] = useState<TaskDataType[]>([])
+  const [taskData, setTaskData] = useState<TaskDataType[]>(item)
 
   function handleTheme() {
     setDarkMode(darkMode === 'light' ? 'dark' : 'light')
@@ -18,6 +18,10 @@ function App() {
 
   function handleAddTask(item: TaskDataType) {
     setTaskData((prevTaskData) => [...prevTaskData, item])
+  }
+
+  function handleDeleteTask(id: string) {
+    setTaskData((prevTaskData) => prevTaskData.filter((item) => item.id != id))
   }
 
   return (
@@ -33,7 +37,7 @@ function App() {
         <Header handleTheme={handleTheme} />
         <ProgressBar />
         <FormTask onAddTask={handleAddTask} />
-        <TaskList taskData={taskData} />
+        <TaskList taskData={taskData} onDeleteTask={handleDeleteTask} />
       </div>
     </div>
   )
