@@ -4,16 +4,20 @@ import Card from '../Card'
 
 import styles from './style.module.scss'
 
-type TaskItemProps = TaskDataType
+type TaskItemProps = TaskDataType & {
+  onDeleteTask: (item: string) => void
+}
 
 import { FiEdit3 } from 'react-icons/fi'
 import { HiOutlineTrash } from 'react-icons/hi2'
 
 export default function TaskItem({
+  id,
   title,
   priority,
   dueDate,
   completed,
+  onDeleteTask,
 }: TaskItemProps) {
   const dueClass = taskDueDate(dueDate)
 
@@ -71,7 +75,10 @@ export default function TaskItem({
           <button className={[styles.iconBtn, styles.edit].join(' ')}>
             <FiEdit3 />
           </button>
-          <button className={[styles.iconBtn, styles.delete].join(' ')}>
+          <button
+            className={[styles.iconBtn, styles.delete].join(' ')}
+            onClick={() => onDeleteTask(id)}
+          >
             <HiOutlineTrash />
           </button>
         </div>
