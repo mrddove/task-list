@@ -24,6 +24,14 @@ function App() {
     setTaskData((prevTaskData) => prevTaskData.filter((item) => item.id != id))
   }
 
+  function handleDoneTask(id: string) {
+    setTaskData((prevTaskData) =>
+      prevTaskData.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item,
+      ),
+    )
+  }
+
   return (
     <div className="container" data-theme={darkMode}>
       <input
@@ -37,7 +45,11 @@ function App() {
         <Header handleTheme={handleTheme} />
         <ProgressBar />
         <FormTask onAddTask={handleAddTask} />
-        <TaskList taskData={taskData} onDeleteTask={handleDeleteTask} />
+        <TaskList
+          taskData={taskData}
+          onDeleteTask={handleDeleteTask}
+          onDoneTask={handleDoneTask}
+        />
       </div>
     </div>
   )
