@@ -1,18 +1,16 @@
+import type { InputProps } from '../types'
 import styles from './style.module.scss'
 
-type TaskInputProps = {
-  name: string
-}
-
-export default function InputForm({ name }: TaskInputProps) {
+export default function InputForm({ name, label, id, type }: InputProps) {
   return (
     <div className={styles.task}>
-      <label htmlFor="task-input" className="sr-only">
-        Add Task
+      <label htmlFor={id} className="sr-only">
+        {label}
       </label>
       <input
-        type="text"
+        type={type}
         name={name}
+        id={id}
         className={styles.task__input}
         placeholder="Type your task here.."
       />
