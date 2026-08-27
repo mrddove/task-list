@@ -6,12 +6,14 @@ type TaskListProps = {
   taskData: TaskDataType[]
   onDeleteTask: (item: string) => void
   onDoneTask: (item: string) => void
+  onEditModal: (item: TaskDataType) => void
 }
 
 export default function TaskList({
   taskData,
   onDeleteTask,
   onDoneTask,
+  onEditModal,
 }: TaskListProps) {
   return (
     <section>
@@ -19,9 +21,10 @@ export default function TaskList({
         {taskData.map((task) => (
           <TaskItem
             key={task.id}
-            {...task}
+            taskItems={task}
             onDeleteTask={onDeleteTask}
             onDoneTask={onDoneTask}
+            onEditModal={onEditModal}
           />
         ))}
       </ul>

@@ -8,7 +8,7 @@ type TaskItemProps = {
   taskItems: TaskDataType
   onDeleteTask: (item: string) => void
   onDoneTask: (item: string) => void
-  onEditTask: (item: TaskDataType) => void
+  onEditModal: (item: TaskDataType) => void
 }
 
 import { FiEdit3 } from 'react-icons/fi'
@@ -18,7 +18,7 @@ export default function TaskItem({
   taskItems,
   onDeleteTask,
   onDoneTask,
-  onEditTask,
+  onEditModal,
 }: TaskItemProps) {
   const { id, title, priority, dueDate, completed } = taskItems
   const dueClass = taskDueDate(dueDate)
@@ -80,7 +80,7 @@ export default function TaskItem({
         <div className={styles.item__actions}>
           <button
             className={[styles.iconBtn, styles.edit].join(' ')}
-            onClick={() => onEditTask(taskItems)}
+            onClick={() => onEditModal(taskItems)}
           >
             <FiEdit3 />
           </button>
