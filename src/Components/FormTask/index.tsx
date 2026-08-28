@@ -1,12 +1,15 @@
+import type { EditState } from '../../App'
 import type { TaskDataType } from '../../assets/taskData'
-import DueDateInput from './DueDateInput'
-import InputForm from './InputForm'
-import SelectPriority from './SelectPriority'
+import Button from '../Button'
+import DueDateInput from '../DueDateInput'
+import InputForm from '../InputForm'
+import SelectPriority from '../SelectPriority'
 
 import styles from './style.module.scss'
 
 type FormTaskProps = {
   onAddTask: (item: TaskDataType) => void
+  editItem: EditState
 }
 
 export default function FormTask({ onAddTask }: FormTaskProps) {
@@ -29,8 +32,14 @@ export default function FormTask({ onAddTask }: FormTaskProps) {
   return (
     <section>
       <form action={handleAddTask}>
-        <InputForm name="task" label="Add Task" id="task-input" type="text" />
-        <fieldset className={styles.fieldset}>
+        <div className={styles.flexLayout}>
+          <InputForm name="task" label="Add Task" id="task-input" type="text" />
+          <Button type="submit" variant="primary">
+            + Add
+          </Button>
+        </div>
+
+        <fieldset className="fieldset">
           <legend className="sr-only">Task Details</legend>
           <SelectPriority
             name="priority"
