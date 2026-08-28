@@ -1,3 +1,4 @@
+import { useActionState } from 'react'
 import type { EditState } from '../../App'
 import type { TaskDataType } from '../../assets/taskData'
 import Button from '../Button'
@@ -13,11 +14,41 @@ type EditFormProps = {
 
 import styles from './style.module.scss'
 
-export default function EditForm({ editItem, onCloseModal }: EditFormProps) {
-  function handleUpdateTask() {}
+type ActionState = string | null
+type ActionPayload = FormData
+
+export default function EditForm({
+  editItem,
+  onCloseModal,
+  onUpdateTask,
+}: EditFormProps) {
+  const [error, dispatchAction, isPending] = useActionState<
+    ActionState,
+    ActionPayload
+  >(handleUpdateTask, null)
+
+  async function handleUpdateTask(prevState: ActionState, formData: FormData) {
+    await new Promise((res) => setTimeout(res, 1000))
+
+    const title = formData.get('task')?.toString() ?? ''
+    const priority = formData.get('priority')?.toString() ?? ''
+    const dueDate = formData.get('dueDate')?.toString() ?? ''
+
+    const updatedTask = {
+      ...editItem.item,
+      title,
+      priority,
+      dueDate,
+    }
+
+    onUpdateTask(updatedTask)
+
+    return prevState
+  }
+
   return (
     <section>
-      <form action={handleUpdateTask}>
+      <form action={dispatchAction}>
         <div className={styles.container}>
           <InputForm
             name="task"
@@ -49,9 +80,10 @@ export default function EditForm({ editItem, onCloseModal }: EditFormProps) {
             Cancel
           </Button>
           <Button type="submit" variant="primary">
-            Update
+            {isPending ? 'Updating...' : 'Update'}
           </Button>
         </div>
+        {error && error}
       </form>
     </section>
   )
