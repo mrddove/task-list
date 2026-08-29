@@ -1,0 +1,28 @@
+.filter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  &__tab {
+    text-transform: capitalize;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+
+    &.active {
+      color: var(--accent);
+    }
+  }
+
+  > .taskLeft {
+    color: var(--text-muted);
+  }
+}
