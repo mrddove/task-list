@@ -87,7 +87,10 @@ function App() {
 
       <div className="taskApp">
         <Header handleTheme={handleTheme} />
-        <ProgressBar />
+        <ProgressBar
+          taskData={taskData}
+          completed={taskData.filter((item) => item.completed)}
+        />
         <FormTask onAddTask={handleAddTask} editItem={editTask} />
         <FilterTask
           taskLeft={taskLeft}
