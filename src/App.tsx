@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { taskData as item, type TaskDataType } from './assets/taskData'
 import EditForm from './Components/EditForm'
+import FilterTask from './Components/FilterTask'
 import FormTask from './Components/FormTask'
 import Header from './Components/Header'
 import Modal from './Components/Modal'
@@ -8,6 +9,7 @@ import ProgressBar from './Components/ProgressBar'
 import TaskList from './Components/TaskList'
 
 type Mode = 'light' | 'dark'
+export type TFilters = 'all' | 'active' | 'completed'
 
 export type EditState = {
   item: TaskDataType
@@ -23,6 +25,13 @@ function App() {
     item: {} as TaskDataType,
     edit: false,
   })
+  const [filters, setFilters] = useState<TFilters>('all')
+
+  const filteredTask = taskData
+    .filter((item) => (filters === 'active' ? item.completed : item))
+    .filter((item) => (filters === 'completed' ? !item.completed : item))
+
+  const taskLeft = taskData.filter((item) => !item.completed)
 
   function handleTheme() {
     setDarkMode(darkMode === 'light' ? 'dark' : 'light')
@@ -61,6 +70,11 @@ function App() {
     setEditTask((prevEdiTask) => ({ ...prevEdiTask, edit: false }))
   }
 
+  // filters all, active, completed
+  function handleFilters(filterId: TFilters) {
+    setFilters(filterId)
+  }
+
   return (
     <div className="container" data-theme={darkMode}>
       <input
@@ -74,8 +88,13 @@ function App() {
         <Header handleTheme={handleTheme} />
         <ProgressBar />
         <FormTask onAddTask={handleAddTask} editItem={editTask} />
+        <FilterTask
+          taskLeft={taskLeft}
+          currentFilter={filters}
+          onFilterChange={handleFilters}
+        />
         <TaskList
-          taskData={taskData}
+          taskData={filteredTask}
           onDeleteTask={handleDeleteTask}
           onDoneTask={handleDoneTask}
           onEditModal={openEditModalForm}
