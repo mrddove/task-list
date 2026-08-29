@@ -21,8 +21,8 @@ function App() {
   const [filters, setFilters] = useState<TFilters>('all')
 
   const filteredTask = taskData
-    .filter((item) => (filters === 'active' ? item.completed : item))
-    .filter((item) => (filters === 'completed' ? !item.completed : item))
+    .filter((item) => (filters === 'active' ? !item.completed : item))
+    .filter((item) => (filters === 'completed' ? item.completed : item))
 
   const taskLeft = taskData.filter((item) => !item.completed)
 
