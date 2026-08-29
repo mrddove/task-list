@@ -18,6 +18,6 @@ export type Mode = 'light' | 'dark'
 export type TFilters = 'all' | 'active' | 'completed'
 
 export type EditState = {
-  item: TaskDataType
+  item: TaskDataType | null
   edit: boolean
 }
