@@ -1,14 +1,23 @@
+import type { TaskDataType } from '../../types'
 import Card from '../Card'
 
 import styles from './style.module.scss'
 
-export default function ProgressBar() {
+type ProgressBarProps = {
+  taskData: TaskDataType[]
+  completed: TaskDataType[]
+}
+
+export default function ProgressBar({ taskData, completed }: ProgressBarProps) {
+  const percent = Math.round((completed.length / taskData.length) * 100)
   return (
     <section className={styles.progressbar}>
       <Card>
         <div className={styles.progressbar__info}>
-          <span>1 of 3 completed</span>
-          <span className={styles.progressbar__percent}>33%</span>
+          <span>
+            {completed.length} of {taskData.length} completed
+          </span>
+          <span className={styles.progressbar__percent}>{percent}%</span>
         </div>
         <div
           className={styles.progressbar__track}
@@ -18,7 +27,10 @@ export default function ProgressBar() {
           aria-valuemax={100}
           aria-labelledby="progress-label"
         >
-          <div className={styles.progressbar__fill}></div>
+          <div
+            className={styles.progressbar__fill}
+            style={{ width: `${percent}%` }}
+          ></div>
         </div>
       </Card>
     </section>
