@@ -1,5 +1,4 @@
-import type { EditState } from '../../App'
-import type { TaskDataType } from '../../assets/taskData'
+import type { EditState, TaskDataType } from '../../types'
 import Button from '../Button'
 import DueDateInput from '../DueDateInput'
 import InputForm from '../InputForm'

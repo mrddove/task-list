@@ -1,5 +1,4 @@
-import type { TFilters } from '../../App'
-import type { TaskDataType } from '../../assets/taskData'
+import type { TaskDataType, TFilters } from '../../types'
 import styles from './style.module.scss'
 
 type FilterTaskProps = {

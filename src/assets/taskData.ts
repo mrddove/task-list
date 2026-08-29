@@ -1,10 +1,4 @@
-export type TaskDataType = {
-  id: string
-  title: string
-  completed: boolean
-  priority: string
-  dueDate: string
-}
+import type { TaskDataType } from '../types'
 
 export const taskData: TaskDataType[] = [
   {
