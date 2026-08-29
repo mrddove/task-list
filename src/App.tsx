@@ -15,19 +15,27 @@ function App() {
   const [taskData, setTaskData] = useState<TaskDataType[]>(item)
 
   const [editTask, setEditTask] = useState<EditState>({
-    item: {} as TaskDataType,
+    item: null,
     edit: false,
   })
-  const [filters, setFilters] = useState<TFilters>('all')
+  const [filter, setFilter] = useState<TFilters>('all')
 
-  const filteredTask = taskData
-    .filter((item) => (filters === 'active' ? !item.completed : item))
-    .filter((item) => (filters === 'completed' ? item.completed : item))
+  const filteredTask = taskData.filter((item) => {
+    if (filter === 'active') {
+      return !item.completed
+    }
+
+    if (filter === 'completed') {
+      return item.completed
+    }
+
+    return item
+  })
 
   const taskLeft = taskData.filter((item) => !item.completed)
 
   function handleTheme() {
-    setDarkMode(darkMode === 'light' ? 'dark' : 'light')
+    setDarkMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
   }
 
   function handleAddTask(item: TaskDataType) {
@@ -35,7 +43,7 @@ function App() {
   }
 
   function handleDeleteTask(id: string) {
-    setTaskData((prevTaskData) => prevTaskData.filter((item) => item.id != id))
+    setTaskData((prevTaskData) => prevTaskData.filter((item) => item.id !== id))
   }
 
   function handleDoneTask(id: string) {
@@ -56,16 +64,16 @@ function App() {
         item.id === editedItem.id ? { ...item, ...editedItem } : item,
       ),
     )
-    setEditTask({ item: {} as TaskDataType, edit: false })
+    setEditTask({ item: null, edit: false })
   }
 
   function closeModalForm() {
-    setEditTask((prevEdiTask) => ({ ...prevEdiTask, edit: false }))
+    setEditTask({ item: null, edit: false })
   }
 
   // filters all, active, completed
   function handleFilters(filterId: TFilters) {
-    setFilters(filterId)
+    setFilter(filterId)
   }
 
   return (
@@ -73,7 +81,7 @@ function App() {
       <input
         type="checkbox"
         checked={darkMode === 'dark'}
-        className="theme-toggle hey"
+        className="theme-toggle"
         onChange={handleTheme}
       />
 
@@ -83,7 +91,7 @@ function App() {
         <FormTask onAddTask={handleAddTask} editItem={editTask} />
         <FilterTask
           taskLeft={taskLeft}
-          currentFilter={filters}
+          currentFilter={filter}
           onFilterChange={handleFilters}
         />
         <TaskList
