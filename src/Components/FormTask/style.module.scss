@@ -1,0 +1,49 @@
+.flexLayout {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+:global(.fieldset) {
+  display: flex;
+  gap: 1.2rem;
+  border: 0;
+}
+
+:global(.wrap) {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+:global(.priority__select),
+:global(.date__input) {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  font-size: 1.3rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: 0.15rem solid var(--border);
+  border-radius: 1rem;
+  background-color: var(--surface);
+  color: var(--text);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  transition: border-color 0.15s ease;
+}
+
+:global(.priority__select) {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+:global(.date__input) {
+  color-scheme: dark;
+}
+
+:global(.date__input)::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}

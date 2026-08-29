@@ -1,0 +1,4 @@
+@use '../../styles/mixins';
+.card {
+  @include mixins.surface-card;
+}

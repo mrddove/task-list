@@ -1,0 +1,20 @@
+:global(.theme-toggle) {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  top: -9999px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #eef0f5;
+    margin: 0;
+  }
+}
