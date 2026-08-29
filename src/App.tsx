@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { taskData as item, type TaskDataType } from './assets/taskData'
+import { taskData as item } from './assets/taskData'
 import EditForm from './Components/EditForm'
 import FilterTask from './Components/FilterTask'
 import FormTask from './Components/FormTask'
@@ -7,14 +7,7 @@ import Header from './Components/Header'
 import Modal from './Components/Modal'
 import ProgressBar from './Components/ProgressBar'
 import TaskList from './Components/TaskList'
-
-type Mode = 'light' | 'dark'
-export type TFilters = 'all' | 'active' | 'completed'
-
-export type EditState = {
-  item: TaskDataType
-  edit: boolean
-}
+import type { EditState, Mode, TaskDataType, TFilters } from './types'
 
 function App() {
   const [darkMode, setDarkMode] = useState<Mode>('light')

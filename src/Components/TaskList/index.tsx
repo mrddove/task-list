@@ -1,4 +1,4 @@
-import type { TaskDataType } from '../../assets/taskData'
+import type { TaskDataType } from '../../types'
 import TaskItem from '../TaskItem'
 import styles from './style.module.scss'
 

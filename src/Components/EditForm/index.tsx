@@ -1,6 +1,4 @@
 import { useActionState } from 'react'
-import type { EditState } from '../../App'
-import type { TaskDataType } from '../../assets/taskData'
 import Button from '../Button'
 import DueDateInput from '../DueDateInput'
 import InputForm from '../InputForm'
@@ -12,6 +10,7 @@ type EditFormProps = {
   onUpdateTask: (editedItem: TaskDataType) => void
 }
 
+import type { EditState, TaskDataType } from '../../types'
 import styles from './style.module.scss'
 
 type ActionState = string | null

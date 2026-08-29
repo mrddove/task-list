@@ -1,4 +1,4 @@
-import type { TaskDataType } from '../../assets/taskData'
+import type { TaskDataType } from '../../types'
 import { taskDueDate } from '../../utils/dueDate'
 import Card from '../Card'
 
