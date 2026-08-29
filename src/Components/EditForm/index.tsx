@@ -11,6 +11,7 @@ type EditFormProps = {
 }
 
 import type { EditState, TaskDataType } from '../../types'
+import { validateForm } from '../../utils/validateForm'
 import styles from './style.module.scss'
 
 type ActionState = string | null
@@ -39,14 +40,23 @@ export default function EditForm({
     const priority = formData.get('priority')?.toString() ?? ''
     const dueDate = formData.get('dueDate')?.toString() ?? ''
 
-    const updatedTask = {
-      ...editItem.item,
-      title,
-      priority,
+    const { isValid, message: errorMessage } = validateForm({
+      task: title,
       dueDate,
-    }
+    })
 
-    onUpdateTask(updatedTask)
+    if (isValid) {
+      const updatedTask = {
+        ...editItem.item,
+        title,
+        priority,
+        dueDate,
+      }
+
+      onUpdateTask(updatedTask)
+    } else if (!isValid) {
+      alert(JSON.stringify(errorMessage, null, 2))
+    }
 
     return prevState
   }

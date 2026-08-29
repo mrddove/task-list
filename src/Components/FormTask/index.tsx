@@ -1,4 +1,5 @@
 import type { EditState, TaskDataType } from '../../types'
+import { validateForm } from '../../utils/validateForm'
 import Button from '../Button'
 import DueDateInput from '../DueDateInput'
 import InputForm from '../InputForm'
@@ -17,15 +18,24 @@ export default function FormTask({ onAddTask }: FormTaskProps) {
     const priority = formData.get('priority')?.toString() ?? ''
     const dueDate = formData.get('dueDate')?.toString() ?? ''
 
-    const newTask = {
-      id: crypto.randomUUID(),
-      title: task,
-      completed: false,
-      priority,
+    const { isValid, message: errrorMessage } = validateForm({
+      task,
       dueDate,
-    }
+    })
 
-    onAddTask(newTask)
+    if (isValid) {
+      const newTask = {
+        id: crypto.randomUUID(),
+        title: task,
+        completed: false,
+        priority,
+        dueDate,
+      }
+
+      onAddTask(newTask)
+    } else if (!isValid) {
+      alert(JSON.stringify(errrorMessage, null, 2))
+    }
   }
 
   return (
