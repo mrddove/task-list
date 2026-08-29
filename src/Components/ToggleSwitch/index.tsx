@@ -16,13 +16,13 @@ export default function ToogleSwitch({ onChangeTheme }: ToogleSwitchProps) {
       onClick={onChangeTheme}
     >
       <span className={styles.switch__icon} aria-hidden="true">
-        <IoSunny />
+        <WiMoonWaningCrescent3 />
       </span>
       <span className={styles.switch__track}>
         <span className={styles.thumb}></span>
       </span>
       <span className={styles.switch__icon} aria-hidden="true">
-        <WiMoonWaningCrescent3 />
+        <IoSunny />
       </span>
     </label>
   )

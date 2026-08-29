@@ -47,7 +47,3 @@
 :global(.date__input)::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
-
-:global(.theme-toggle):checked ~ :global(.taskApp) :global(.date__input) {
-  color-scheme: light;
-}

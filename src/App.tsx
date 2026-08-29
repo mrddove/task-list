@@ -103,17 +103,17 @@ function App() {
           onDoneTask={handleDoneTask}
           onEditModal={openEditModalForm}
         />
-      </div>
 
-      {editTask.edit && (
-        <Modal headerText="Edit Task" onCloseModal={closeModalForm}>
-          <EditForm
-            editItem={editTask}
-            onCloseModal={closeModalForm}
-            onUpdateTask={handleUpdateTask}
-          />
-        </Modal>
-      )}
+        {editTask.edit && (
+          <Modal headerText="Edit Task" onCloseModal={closeModalForm}>
+            <EditForm
+              editItem={editTask}
+              onCloseModal={closeModalForm}
+              onUpdateTask={handleUpdateTask}
+            />
+          </Modal>
+        )}
+      </div>
     </div>
   )
 }
