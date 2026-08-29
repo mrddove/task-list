@@ -1,13 +1,12 @@
 .flexLayout {
   display: flex;
   gap: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 :global(.fieldset) {
   display: flex;
   gap: 1.2rem;
-  margin-bottom: 2rem;
   border: 0;
 }
 
