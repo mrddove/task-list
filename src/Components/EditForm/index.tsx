@@ -26,7 +26,13 @@ export default function EditForm({
     ActionPayload
   >(handleUpdateTask, null)
 
-  async function handleUpdateTask(prevState: ActionState, formData: FormData) {
+  async function handleUpdateTask(
+    prevState: ActionState,
+    formData: FormData,
+  ): Promise<ActionState> {
+    //  Guard clause: Ensure editItem.item is not null
+    if (!editItem.item) return prevState
+
     await new Promise((res) => setTimeout(res, 1000))
 
     const title = formData.get('task')?.toString() ?? ''
@@ -54,7 +60,7 @@ export default function EditForm({
             label="Add Task"
             id="task-input"
             type="text"
-            defaultValue={editItem.item.title}
+            defaultValue={editItem?.item?.title}
           />
         </div>
         <fieldset className="fieldset">
@@ -63,14 +69,14 @@ export default function EditForm({
             name="priority"
             label="Priority"
             id="priority-select"
-            defaultValue={editItem.item.priority}
+            defaultValue={editItem?.item?.priority}
           />
           <DueDateInput
             name="dueDate"
             label="Due date"
             id="due-date-input"
             type="date"
-            defaultValue={editItem.item.dueDate}
+            defaultValue={editItem?.item?.dueDate}
           />
         </fieldset>
 
