@@ -1,4 +1,4 @@
-import type { EditState, TaskDataType } from '../../types'
+import { useTasks } from '../../context/TaskContext'
 import { validateForm } from '../../utils/validateForm'
 import Button from '../Button'
 import DueDateInput from '../DueDateInput'
@@ -7,13 +7,10 @@ import SelectPriority from '../SelectPriority'
 
 import styles from './style.module.scss'
 
-type FormTaskProps = {
-  onAddTask: (item: TaskDataType) => void
-  editItem: EditState
-}
+export default function FormTask() {
+  const { handleAddTask } = useTasks()
 
-export default function FormTask({ onAddTask }: FormTaskProps) {
-  function handleAddTask(formData: FormData) {
+  function onSubmitTaskAction(formData: FormData) {
     const task = formData.get('task')?.toString() ?? ''
     const priority = formData.get('priority')?.toString() ?? ''
     const dueDate = formData.get('dueDate')?.toString() ?? ''
@@ -32,7 +29,7 @@ export default function FormTask({ onAddTask }: FormTaskProps) {
         dueDate,
       }
 
-      onAddTask(newTask)
+      handleAddTask(newTask)
     } else if (!isValid) {
       alert(JSON.stringify(errrorMessage, null, 2))
     }
@@ -40,7 +37,7 @@ export default function FormTask({ onAddTask }: FormTaskProps) {
 
   return (
     <section>
-      <form action={handleAddTask}>
+      <form action={onSubmitTaskAction}>
         <div className={styles.flexLayout}>
           <InputForm name="task" label="Add Task" id="task-input" type="text" />
           <Button type="submit" variant="primary">
