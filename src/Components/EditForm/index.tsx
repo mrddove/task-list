@@ -4,30 +4,28 @@ import DueDateInput from '../DueDateInput'
 import InputForm from '../InputForm'
 import SelectPriority from '../SelectPriority'
 
-type EditFormProps = {
-  editItem: EditState
-  onCloseModal: () => void
-  onUpdateTask: (editedItem: TaskDataType) => void
-}
-
-import type { EditState, TaskDataType } from '../../types'
+import { useTasks } from '../../context/TaskContext'
+import type { EditState } from '../../types'
 import { validateForm } from '../../utils/validateForm'
 import styles from './style.module.scss'
 
 type ActionState = string | null
 type ActionPayload = FormData
 
-export default function EditForm({
-  editItem,
-  onCloseModal,
-  onUpdateTask,
-}: EditFormProps) {
+type EditFormProps = {
+  editItem: EditState
+}
+
+export default function EditForm({ editItem }: EditFormProps) {
+  const { handleUpdateTask: onUpdateTask } = useTasks()
+
   const [error, dispatchAction, isPending] = useActionState<
     ActionState,
     ActionPayload
-  >(handleUpdateTask, null)
+  >(onSubmitEditAction, null)
 
-  async function handleUpdateTask(
+  // action prop function
+  async function onSubmitEditAction(
     prevState: ActionState,
     formData: FormData,
   ): Promise<ActionState> {
@@ -91,9 +89,7 @@ export default function EditForm({
         </fieldset>
 
         <div className={styles.action}>
-          <Button type="button" onClick={onCloseModal}>
-            Cancel
-          </Button>
+          <Button type="button">Cancel</Button>
           <Button type="submit" variant="primary">
             {isPending ? 'Updating...' : 'Update'}
           </Button>

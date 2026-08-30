@@ -1,22 +1,21 @@
-import type { TaskDataType, TFilters } from '../../types'
+import { useTasks } from '../../context/TaskContext'
+import type { TFilters } from '../../types'
 import styles from './style.module.scss'
 
-type FilterTaskProps = {
-  onFilterChange: (filterId: TFilters) => void
-  currentFilter: TFilters
-  taskLeft: TaskDataType[]
-}
-
-export default function FilterTask({
-  currentFilter,
-  onFilterChange,
-  taskLeft,
-}: FilterTaskProps) {
+export default function FilterTask() {
   const filters: { value: TFilters }[] = [
     { value: 'all' },
     { value: 'active' },
     { value: 'completed' },
   ]
+
+  const {
+    taskLeft,
+    filter: currentFilter,
+    handleFilters: onFilterChange,
+  } = useTasks()
+
+  
   return (
     <nav className={styles.filter} aria-label="Task filters">
       <ul className={styles.filter__container}>

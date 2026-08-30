@@ -1,3 +1,4 @@
+import { useTasks } from '../../context/TaskContext'
 import type { TaskDataType } from '../../types'
 import { taskDueDate } from '../../utils/dueDate'
 import Card from '../Card'
@@ -6,20 +7,18 @@ import styles from './style.module.scss'
 
 type TaskItemProps = {
   taskItems: TaskDataType
-  onDeleteTask: (item: string) => void
-  onDoneTask: (item: string) => void
-  onEditModal: (item: TaskDataType) => void
 }
 
 import { FiEdit3 } from 'react-icons/fi'
 import { HiOutlineTrash } from 'react-icons/hi2'
 
-export default function TaskItem({
-  taskItems,
-  onDeleteTask,
-  onDoneTask,
-  onEditModal,
-}: TaskItemProps) {
+export default function TaskItem({ taskItems }: TaskItemProps) {
+  const {
+    handleDeleteTask: onDeleteTask,
+    handleDoneTask: onDoneTask,
+    openEditModalForm: onEditModal,
+  } = useTasks()
+
   const { id, title, priority, dueDate, completed } = taskItems
   const dueClass = taskDueDate(dueDate)
 
