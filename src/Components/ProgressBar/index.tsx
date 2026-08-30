@@ -1,14 +1,18 @@
-import type { TaskDataType } from '../../types'
+import { useTasks } from '../../context/TaskContext'
 import Card from '../Card'
 
 import styles from './style.module.scss'
 
-type ProgressBarProps = {
-  taskData: TaskDataType[]
-  completed: TaskDataType[]
-}
+// type ProgressBarProps = {
+//   taskData: TaskDataType[]
+//   completed: TaskDataType[]
+// }
 
-export default function ProgressBar({ taskData, completed }: ProgressBarProps) {
+export default function ProgressBar() {
+  const { taskData } = useTasks()
+
+  const completed = taskData.filter((item) => item.completed)
+
   const percent = Math.round((completed.length / taskData.length) * 100)
   return (
     <section className={styles.progressbar}>
@@ -17,7 +21,9 @@ export default function ProgressBar({ taskData, completed }: ProgressBarProps) {
           <span>
             {completed.length} of {taskData.length} completed
           </span>
-          <span className={styles.progressbar__percent}>{percent}%</span>
+          <span className={styles.progressbar__percent}>
+            {!isNaN(percent) ? percent : 0}%
+          </span>
         </div>
         <div
           className={styles.progressbar__track}
@@ -29,7 +35,7 @@ export default function ProgressBar({ taskData, completed }: ProgressBarProps) {
         >
           <div
             className={styles.progressbar__fill}
-            style={{ width: `${percent}%` }}
+            style={{ width: `${taskData.length === 0 ? 0 : percent}%` }}
           ></div>
         </div>
       </Card>

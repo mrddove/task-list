@@ -1,31 +1,15 @@
-import type { TaskDataType } from '../../types'
+import { useTasks } from '../../context/TaskContext'
 import TaskItem from '../TaskItem'
 import styles from './style.module.scss'
 
-type TaskListProps = {
-  taskData: TaskDataType[]
-  onDeleteTask: (item: string) => void
-  onDoneTask: (item: string) => void
-  onEditModal: (item: TaskDataType) => void
-}
+export default function TaskList() {
+  const { filteredTask } = useTasks()
 
-export default function TaskList({
-  taskData,
-  onDeleteTask,
-  onDoneTask,
-  onEditModal,
-}: TaskListProps) {
   return (
     <section>
       <ul className={styles.task}>
-        {taskData.map((task) => (
-          <TaskItem
-            key={task.id}
-            taskItems={task}
-            onDeleteTask={onDeleteTask}
-            onDoneTask={onDoneTask}
-            onEditModal={onEditModal}
-          />
+        {filteredTask.map((task) => (
+          <TaskItem key={task.id} taskItems={task} />
         ))}
       </ul>
     </section>
