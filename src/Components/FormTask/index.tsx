@@ -1,5 +1,5 @@
 import { useTasks } from '../../context/TaskContext'
-import { validateForm } from '../../utils/validateForm'
+import { validateForm, type TPriority } from '../../utils/validateForm'
 import Button from '../Button'
 import DueDateInput from '../DueDateInput'
 import InputForm from '../InputForm'
@@ -12,12 +12,13 @@ export default function FormTask() {
 
   function onSubmitTaskAction(formData: FormData) {
     const task = formData.get('task')?.toString() ?? ''
-    const priority = formData.get('priority')?.toString() ?? ''
+    const priority = (formData.get('priority')?.toString() ?? '') as TPriority
     const dueDate = formData.get('dueDate')?.toString() ?? ''
 
     const { isValid, message: errrorMessage } = validateForm({
       task,
       dueDate,
+      priority,
     })
 
     if (isValid) {
