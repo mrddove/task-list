@@ -23,9 +23,7 @@ export default function SelectPriority({
       >
         <option value="">Priority</option>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.value}
-          </option>
+          <option key={option.value}>{option.value}</option>
         ))}
       </select>
       <div className={styles.priority__icon}>
