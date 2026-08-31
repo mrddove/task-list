@@ -6,7 +6,7 @@ import SelectPriority from '../SelectPriority'
 
 import { useTasks } from '../../context/TaskContext'
 import type { EditState } from '../../types'
-import { validateForm } from '../../utils/validateForm'
+import { validateForm, type TPriority } from '../../utils/validateForm'
 import styles from './style.module.scss'
 
 type ActionState = string | null
@@ -35,12 +35,13 @@ export default function EditForm({ editItem }: EditFormProps) {
     await new Promise((res) => setTimeout(res, 1000))
 
     const title = formData.get('task')?.toString() ?? ''
-    const priority = formData.get('priority')?.toString() ?? ''
+    const priority = (formData.get('priority')?.toString() ?? '') as TPriority
     const dueDate = formData.get('dueDate')?.toString() ?? ''
 
     const { isValid, message: errorMessage } = validateForm({
       task: title,
       dueDate,
+      priority,
     })
 
     if (isValid) {
@@ -61,7 +62,7 @@ export default function EditForm({ editItem }: EditFormProps) {
 
   return (
     <section>
-      <form action={dispatchAction}>
+      <form action={dispatchAction} noValidate>
         <div className={styles.container}>
           <InputForm
             name="task"
