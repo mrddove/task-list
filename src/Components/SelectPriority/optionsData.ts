@@ -1,9 +1,8 @@
-export type Options = {
-  value: string
+type TOptions = {
+  value: 'high' | 'medium' | 'low'
 }
 
-export const options: Options[] = [
-  { value: 'priority' },
+export const options: TOptions[] = [
   { value: 'high' },
   { value: 'medium' },
   { value: 'low' },

@@ -21,6 +21,7 @@ export default function SelectPriority({
         name={name}
         className="priority__select"
       >
+        <option value="">Priority</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.value}
